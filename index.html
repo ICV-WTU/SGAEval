@@ -3,243 +3,36 @@
 <head data-page-node-id="3iWXtzV4m6W8y3NiX57NWW">
   <meta charset="UTF-8" data-page-node-id="nCaYDJTjxh3sIErYfQxPKL">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="cMXDGpeVYYus1HpeL6JTvA">
-  <title>Weak-Reference Structural Distortion Evaluation for SLAM Point Cloud Maps</title>
+  <title>Satellite-Guided Assessment of Structural Distortion in SLAM Point Cloud Maps</title>
   <style>
-    :root {
-      --link: #3273dc;
-      --text: #363636;
-      --muted: #4a4a4a;
-    }
-    * { box-sizing: border-box; }
-    body {
-      font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      color: var(--text);
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 20px 60px;
-    }
-    header {
-      text-align: center;
-      padding: 56px 0 6px;
-    }
-    header h1 {
-      font-size: 1.8rem;
-      line-height: 1.35;
-      margin: 0 0 22px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-    .authors {
-      font-size: 1.05rem;
-      margin-bottom: 10px;
-    }
-    .authors span { margin: 0 0.6em; white-space: nowrap; }
-    .authors a { color: var(--link); text-decoration: none; }
-    .authors a:hover { text-decoration: underline; }
-    sup { font-size: 0.7em; }
-    .affiliations {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 26px;
-    }
-    .buttons { margin: 4px 0 10px; }
-    .button {
-      display: inline-block;
-      margin: 0 5px 8px;
-      padding: 5px 16px;
-      border: 1px solid #dbdbdb;
-      border-radius: 6px;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.92rem;
-      background: #fff;
-      transition: border-color .15s ease;
-    }
-    .button:hover { border-color: #9a9a9a; }
-    .button .icon { margin-right: 6px; }
+/* Research-project presentation, informed by the UCLA V2X-Real reference. */
+:root{--ink:#171717;--text:#333;--muted:#555;--link:#28679e;--line:#d7d7d7;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;background:#fff;color:var(--text);font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}.container{width:min(1160px,calc(100% - 80px));margin:0 auto;padding-bottom:70px}
+header{min-height:520px;padding:85px 0 52px 48%;text-align:right;position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:center}
+header::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:calc((1160px - 100vw)/2);width:90%;min-width:650px;background:linear-gradient(90deg,#ffffff42 0%,#ffffff33 42%,#fff 95%),url('static/images/qual_overlay_campus.jpg') left center/auto 100% no-repeat;opacity:.29;pointer-events:none;mask-image:linear-gradient(to bottom,#000 65%,transparent 100%)}
+header h1{font-size:clamp(30px,3.1vw,44px);font-weight:750;color:#111;line-height:1.18;letter-spacing:-.025em;margin:0 0 27px;text-wrap:balance}
+.authors{font-size:17px;font-weight:600;display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px 22px;margin-bottom:10px}.authors span{white-space:nowrap}sup{font-size:.65em;padding-left:2px}a{color:var(--link);text-decoration:none;text-underline-offset:4px}.authors a:hover{text-decoration:underline}.affiliations{font-size:13px;line-height:1.9;color:#444;max-width:510px;margin-left:auto}.buttons{display:flex;justify-content:flex-end;gap:12px;margin-top:23px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;min-width:115px;padding:7px 23px;border:1px solid #222;border-radius:3px;color:#fff;background:#222;font-size:14px;font-weight:600;text-decoration:none;transition:background .15s}.button:hover{background:#4c4c4c}.button:last-child{background:#fff;color:#222}.button:last-child:hover{background:#f2f2f2}a:focus-visible{outline:3px solid #417fb5;outline-offset:5px}
+.project-nav{display:flex;justify-content:space-between;align-items:center;gap:22px;padding:18px 0 15px;margin:0 0 43px;border-bottom:1px solid #555;background:#fff;overflow-x:auto;scrollbar-width:thin}.project-nav a{color:#191919;white-space:nowrap;font-size:17px;font-weight:600;letter-spacing:.035em}.project-nav a:hover{color:var(--link);text-decoration:underline}
+.block{margin-top:30px}.container>header+.project-nav+.block{margin-top:0}.card{background:transparent;border:0;padding:0;border-radius:0;box-shadow:none}.card img.full{display:block;width:100%;height:auto;border-radius:0}.caption,.table-note{font-size:15px;line-height:1.75;color:var(--muted);text-align:left;margin:15px auto 0;max-width:100%}.caption b,.table-note b{color:#222;font-weight:700}.section{margin-top:65px;padding-top:8px;scroll-margin-top:30px}.section h2{font-size:32px;font-weight:700;color:#292929;letter-spacing:-.02em;line-height:1.25;margin:0 0 30px;text-align:left}.section>.block:first-of-type{margin-top:0}.section .block+.block{margin-top:42px}
+.qual-grid{display:flex;flex-direction:column;gap:10px}.qual-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:center}.qual-row.seq-row{padding-bottom:11px;border-bottom:1px solid #ccc;margin-bottom:9px}.seq-name{font-size:16px;font-weight:700;color:#222;text-align:center;margin:0}.img-tag{font-size:13px;color:#555;text-align:center;margin:0}.img-box{display:flex;align-items:center;justify-content:center;aspect-ratio:2.15/1}.qual-row.heat .img-box{aspect-ratio:2.6/1}.img-box img{max-width:100%;max-height:100%;width:auto;height:auto;display:block}.qual-row.heat{margin-top:16px}
+.table-wrap{overflow-x:auto;scrollbar-width:thin;scrollbar-color:#aaa #eee}table{border-collapse:collapse;width:100%;margin:0;font-size:15px;font-variant-numeric:tabular-nums}th,td{padding:14px 12px;text-align:center;border-bottom:1px solid #d9d9d9}thead th{background:#eee;color:#222;border-top:2px solid #333;border-bottom:2px solid #555;font-size:14px;font-weight:700;white-space:nowrap}tbody tr:last-child td{border-bottom:2px solid #555}td[rowspan]{font-weight:600;background:#fafafa;border-right:1px solid #ddd}tbody tr:nth-child(even){background:#fafafa}td b{color:#111;font-weight:750}td.left,th.left{text-align:left}.table-note{margin-top:16px}.bibtex{background:#f5f5f5;border:1px solid #e1e1e1;border-radius:0;padding:23px 26px;font:13px/1.8 Consolas,"Liberation Mono",monospace;color:#333;white-space:pre;overflow-x:auto;scrollbar-width:thin}.two-col,.three-col{display:flex;gap:20px;align-items:stretch}.two-col>div,.three-col>div{flex:1}.intro-card{background:transparent;border:0;border-radius:0;padding:0}.intro-card h3{font-size:22px;font-weight:700;color:#222;letter-spacing:-.01em;margin:0 0 14px}.intro-card p.lead{font-size:15px;line-height:1.7;color:var(--text);margin:0 0 14px}.intro-card ul{margin:0;padding-left:22px}.intro-card li{font-size:15px;line-height:1.7;color:var(--text);margin-bottom:10px}.intro-card li:last-child{margin-bottom:0}.sublabel{text-align:center;font-size:13px;color:#555}.map-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.map-grid figure{margin:0}.map-grid img{width:100%;display:block}.map-grid figcaption{font-size:13px;text-align:center}
+.pipeline-cols{display:flex;gap:34px;align-items:stretch}
+.pipeline-fig{flex:1 1 56%;display:flex;align-items:center;min-width:0}
+.pipeline-fig img{display:block;width:100%;height:100%;object-fit:contain}
+.pipeline-text{flex:1 1 44%;display:flex;flex-direction:column;justify-content:center}
+.quant-cols{display:flex;gap:34px;align-items:stretch}
+.quant-text{flex:0 0 36%;display:flex;flex-direction:column;justify-content:center}
+.quant-table{flex:1;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.quant-table table{font-size:13px}
+.quant-table th,.quant-table td{padding:9px 7px}
+@media(min-width:1450px){header{min-height:550px;padding-top:100px;padding-bottom:75px}header::before{width:95%}}
+@media(max-width:1239px){header::before{left:-40px;width:85%;min-width:0}}
+@media(max-width:900px){.container{width:calc(100% - 48px)}header{padding:62px 0 43px 38%;min-height:450px}header h1{font-size:35px}header::before{left:-24px;width:80%;opacity:.22}.authors{font-size:15px;gap:8px 16px}.affiliations{font-size:12px}.project-nav{gap:25px;justify-content:flex-start}.project-nav a{font-size:15px}.section h2{font-size:30px}.caption,.table-note{font-size:14px}}
+@media(max-width:600px){.container{width:calc(100% - 32px);padding-bottom:45px}.pipeline-cols{flex-direction:column;gap:22px}.pipeline-fig{flex:none}.pipeline-fig img{width:100%;height:auto}.quant-cols{flex-direction:column;gap:24px}.quant-text{flex:none}header{padding:47px 0 31px;min-height:0;text-align:center}header::before{inset:0 -16px auto;height:280px;width:calc(100% + 32px);background-position:center;opacity:.12;mask-image:linear-gradient(to bottom,#000,transparent)}header h1{font-size:30px;line-height:1.2;letter-spacing:-.025em;margin-bottom:23px}.authors{font-size:14px;justify-content:center;gap:7px 18px}.affiliations{font-size:12px;max-width:335px;margin:0 auto}.buttons{justify-content:center;margin-top:19px;gap:10px}.button{min-height:42px;min-width:111px;font-size:13px}.project-nav{padding:15px 0 13px;margin-bottom:30px;gap:24px}.project-nav a{font-size:14px}.section{margin-top:44px;padding-top:0}.section h2{font-size:27px;margin-bottom:24px}.section .block+.block{margin-top:29px}.caption,.table-note{font-size:12px;line-height:1.75;margin-top:12px}.qual-grid{overflow-x:auto;padding-bottom:9px}.qual-row{min-width:610px;gap:16px}.seq-name{font-size:14px}table{font-size:12px;min-width:590px}th,td{padding:12px 10px}thead th{font-size:12px}.bibtex{font-size:11px;padding:18px}.two-col,.three-col{flex-direction:column}.map-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
+@media print{header{padding:15px 0;min-height:0;text-align:center}header::before,.project-nav{display:none}.container{width:100%}.authors,.buttons{justify-content:center}.affiliations{margin:auto}.section{break-inside:avoid}.bibtex{white-space:pre-wrap}.qual-row,table{min-width:0}}
 
-    .divider {
-      border: none;
-      border-top: 1px solid #e8e8e8;
-      margin: 34px 0 0;
-    }
-
-    /* section headings */
-    .section {
-      margin: 56px 0 0;
-    }
-    .section h2 {
-      text-align: center;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 0 0 24px;
-    }
-    .section h2::after {
-      content: "";
-      display: block;
-      width: 44px;
-      height: 2px;
-      background: #c9c9c9;
-      margin: 8px auto 0;
-    }
-
-    .block { margin: 32px 0 0; }
-
-    /* figure cards */
-    .card {
-      background: #fff;
-      border: 1px solid #e8e8e8;
-      border-radius: 8px;
-      padding: 12px;
-      transition: box-shadow .18s ease, border-color .18s ease;
-    }
-    .card:hover {
-      box-shadow: 0 2px 12px rgba(0,0,0,.07);
-      border-color: #d5d5d5;
-    }
-    .card img.full { width: 100%; height: auto; display: block; border-radius: 3px; }
-
-    .caption {
-      font-size: 0.88rem;
-      color: var(--muted);
-      text-align: center;
-      margin: 10px auto 0;
-      max-width: 96%;
-      line-height: 1.55;
-    }
-    .caption b { color: var(--text); }
-    .sublabel {
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin: 6px 0 0;
-    }
-
-    .two-col { display: flex; gap: 16px; align-items: stretch; }
-    .two-col > div { flex: 1; }
-    .two-col .card { flex: 1; display: flex; flex-direction: column; }
-    .two-col .card img { flex: 0 0 auto; }
-    /* push the (a)/(b) labels to the card bottom so they align across columns */
-    .two-col .card .sublabel { margin-top: auto; padding-top: 8px; }
-
-    .three-col { display: flex; gap: 14px; align-items: stretch; }
-    .three-col > div { flex: 1; }
-
-    table {
-      border-collapse: collapse;
-      margin: 14px auto 4px;
-      font-size: 0.9rem;
-      width: auto;
-      max-width: 100%;
-    }
-    th, td {
-      padding: 6px 12px;
-      text-align: center;
-      border-bottom: 1px solid #e8e8e8;
-    }
-    thead th {
-      border-bottom: 2px solid #444;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    tbody tr:last-child td { border-bottom: 2px solid #444; }
-    td.left, th.left { text-align: left; }
-    .table-note {
-      font-size: 0.88rem;
-      color: var(--muted);
-      text-align: center;
-      margin: 8px auto 0;
-      max-width: 96%;
-      line-height: 1.55;
-    }
-    .table-note b { color: var(--text); }
-    .table-wrap { overflow-x: auto; }
-
-    .map-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    .map-grid figure { margin: 0; }
-    .map-grid img { width: 100%; display: block; border-radius: 3px; }
-    .map-grid figcaption {
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-align: center;
-      margin-top: 5px;
-    }
-
-    /* qualitative: one ROW per figure type, three sequences side by side.
-       Rows are shared, so images with different aspect ratios stay
-       vertically centred and the row labels always line up. */
-    .qual-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .qual-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      align-items: center;
-    }
-    .qual-row.seq-row { align-items: end; }
-    .qual-row .seq-name {
-      text-align: center;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text);
-      margin: 0;
-    }
-    .qual-row .img-tag {
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-align: center;
-      margin: 0;
-    }
-    /* fixed-aspect box: image is scaled to fit and centred, never cropped */
-    .img-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      aspect-ratio: 2.15 / 1;
-    }
-    .qual-row.heat .img-box { aspect-ratio: 2.6 / 1; }
-    .img-box img {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      display: block;
-      border-radius: 3px;
-    }
-
-    .bibtex {
-      background: #f6f8fa;
-      border-radius: 6px;
-      padding: 16px 20px;
-      font-family: 'Consolas', 'Menlo', monospace;
-      font-size: 0.85rem;
-      overflow-x: auto;
-      white-space: pre;
-      line-height: 1.55;
-    }
-    @media (max-width: 700px) {
-      .two-col, .three-col { flex-direction: column; }
-      .qual-row { grid-template-columns: 1fr; gap: 8px; }
-      .map-grid { grid-template-columns: 1fr; }
-      header h1 { font-size: 1.35rem; }
-    }
-  </style>
+</style>
 </head>
 <body data-page-node-id="eDrrURie2kBFzs9biUNs4O">
 
@@ -263,49 +56,86 @@
       <a class="button" href="https://github.com/ICV-WTU/slam_eval">Github</a>
     </div>
   </header>
+  <nav class="project-nav" aria-label="Page sections"><a href="#overview">Overview</a><a href="#evaluation_pipeline">Evaluation Pipeline</a><a href="#dataset">Dataset</a><a href="#results">Results</a><a href="#quantitative-results">Quantitative Results</a><a href="#citation">Citation</a></nav>
 
-  <!-- ===================== Teaser ===================== -->
-  <div class="block" data-page-node-id="Ss7qMFUZL2dUIqPA3bsh1X">
-    <div class="card" data-page-node-id="gZ0dQwLYATKhGItZUzNc46">
-      <img class="full" src="static/images/fig1_problems.png" alt="Case 1 and Case 2" data-page-node-id="WFOYLor2VvZ3vzUBI45eaH">
+
+  <!-- ===================== Intro (What is MLSD? / Dataset) ===================== -->
+  <div class="section" data-page-node-id="hhYula2K5VSqmZtIXqJCpJ">
+    <h2 id="overview" data-page-node-id="bP0srQtYjhOqXDN2H4VnnQ">Overview</h2>
+    <div class="block">
+      <div class="two-col">
+        <div class="intro-card">
+          <h3>What is MLSD?</h3>
+          <p class="lead"><strong><i>MLSD</i> (Maximum Local Scale Deviation)</strong> is a weak-reference metric for assessing planar structural distortion in outdoor SLAM point cloud maps using satellite imagery or aerial orthophotos.</p>
+          <ul>
+            <li>Evaluates map structure without dense 3D ground truth, using shared roads, intersections, and building boundaries as cross-modal anchors.</li>
+            <li>Quantifies anisotropic scaling and shear in the fitted map-to-reference transformation through its normalized Jacobian singular values.</li>
+            <li>Describes correspondence sensitivity with an <strong>Offset Confidence Score (OCS)</strong>, corner candidates, and MLSD sensitivity ranges.</li>
+          </ul>
+        </div>
+        <div class="intro-card">
+          <h3>Self-Collected Outdoor LiDAR Dataset</h3>
+          <p class="lead">Our self-collected dataset provides two representative outdoor LiDAR sequences, <strong>Campus</strong> and <strong>Road</strong>, recorded on and around Wuhan Textile University for SLAM map evaluation.</p>
+          <ul>
+            <li>Portable acquisition with a handheld <strong>Livox HAP (TX)</strong> LiDAR carried by a passenger on an electric bicycle.</li>
+            <li><strong>Campus:</strong> 566 seconds of campus roads, turns, and surrounding buildings. <strong>Road:</strong> 271 seconds of off-campus roads with a larger mapping extent.</li>
+            <li>Real-world evaluation with <strong>DLO</strong> and <strong>Livox Mapping</strong> reconstructions and corresponding <strong>Google Earth satellite imagery</strong>.</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <p class="caption" data-page-node-id="Jx3i6bAT9QuSEWzEkVH3UJ"><b data-page-node-id="XFaMhV8woPzw875FZx9kGC">Figure 1.</b> The existing problems in SLAM evaluation: (a) map quality is unrelated to trajectory accuracy (Case 1 vs. Case 2); (b) accurate ground truth is difficult or impossible to obtain in large-scale or open scenarios.</p>
   </div>
 
-  <!-- ===================== Method ===================== -->
+  <!-- ===================== Evaluation Pipeline ===================== -->
   <div class="section" data-page-node-id="y7HeszpZt9kNM9rt5rkepn">
-    <h2 data-page-node-id="B2NSFNhWwQkqmEzB32jo6X">Method</h2>
+    <h2 id="evaluation_pipeline" data-page-node-id="B2NSFNhWwQkqmEzB32jo6X">Evaluation Pipeline</h2>
 
-    <div class="block" data-page-node-id="QAci2rH0DYm29pZYm7MOSC">
-      <div class="card" data-page-node-id="5uV3itVEDe337mCgRGt9Nv">
-        <img class="full" src="static/images/pipeline.png" alt="Evaluation pipeline" data-page-node-id="jjtCDvphAkqDlbAfkrCtyI">
+    <div class="block">
+      <div class="pipeline-cols">
+        <div class="pipeline-fig">
+          <img src="static/images/pipeline.png" alt="Evaluation pipeline">
+        </div>
+        <div class="pipeline-text intro-card">
+          <p class="lead">The evaluation pipeline relates the horizontal projection of a SLAM point cloud map to an overhead reference. Correspondences between the same physical structures define a planar transformation, whose local scaling behavior provides the MLSD measurement.</p>
+          <ul>
+            <li><strong>Map-to-reference alignment.</strong> Manually selected correspondences are used to fit an affine transformation or homography with RANSAC.</li>
+            <li><strong>Local scale analysis.</strong> At each evaluation location, the two Jacobian singular values are normalized by their geometric mean. MLSD is the maximum sampled deviation from local similarity over a fixed evaluation region.</li>
+            <li><strong>Correspondence sensitivity.</strong> OCS measures the agreement of sampled corner locations with manual or estimated centers. Valid corner candidate combinations yield an MLSD mean and range; a unique configuration also supports perturbation-based stability analysis.</li>
+          </ul>
+        </div>
       </div>
-      <p class="caption" data-page-node-id="n5lWvsY6DFiX3DKL5KVhUK"><b data-page-node-id="7dCWWX24rDnnvxuRvBGSQH">Figure 2.</b> The evaluation pipeline.</p>
     </div>
   </div>
 
   <!-- ===================== Dataset ===================== -->
   <div class="section" data-page-node-id="hhYula2K5VSqmZtIXqJCpJ">
-    <h2 data-page-node-id="bP0srQtYjhOqXDN2H4VnnQ">Dataset</h2>
+    <h2 id="dataset" data-page-node-id="bP0srQtYjhOqXDN2H4VnnQ">Dataset</h2>
+    <div class="block intro-card">
+      <p class="lead">The self-collected sequences capture two outdoor mapping environments: an internal campus road with regular layouts and surrounding buildings, and an off-campus road with a larger coverage area. Both scenes contain structures visible in the LiDAR maps and satellite reference images.</p>
+      <p class="lead">During acquisition, a passenger on the rear seat of an electric bicycle held the Livox HAP (TX) sensor while traveling at approximately 20 km/h. Its 120&deg; &times; 25&deg; field of view produces limited observations of the surroundings. We reconstruct maps with DLO and Livox Mapping to examine the resulting local and accumulated geometry.</p>
+    </div>
+
 
     <div class="block">
       <div class="card">
-        <img class="full" src="static/images/fig3_acquisition.jpg?v=2" alt="Data acquisition: Campus, Device, Road">
+        <img class="full" src="static/images/fig3_acquisition.jpg?v=2" alt="Campus and Road scenes and the handheld Livox HAP acquisition setup">
       </div>
-      <p class="caption"><b>Figure 3.</b> Data acquisition: hand-held Livox HAP mounted on an e-bike, covering the Campus and Road sequences.</p>
     </div>
 
     <div class="block" data-page-node-id="Gjlm6d9AAJixeXXHjG2Ecy">
       <div class="card" data-page-node-id="EmjHLj2jKuDbC6k0jVH3H3">
-        <img class="full" src="static/images/page_scene.png" alt="Two Scene" data-page-node-id="4tOZaPBEDff0dVNXum0gup">
+        <img class="full" src="static/images/page_scene.png" alt="Local and accumulated DLO and Livox Mapping maps for Campus and Road" data-page-node-id="4tOZaPBEDff0dVNXum0gup">
       </div>
-      <p class="caption" data-page-node-id="jFUFtJ0fqaBVp317FaBQsf"><b data-page-node-id="pMr7ubkBIrvKsgtDbFMrAX">Figure 4.</b> Local maps preserve fine structure, while global maps accumulate scale inconsistency and structural drift.</p>
     </div>
   </div>
 
   <!-- ===================== Results (figures) ===================== -->
   <div class="section" data-page-node-id="DNFJtKL6FICSxDfw3DRfwt">
-    <h2 data-page-node-id="TyDLXDlJEq8Vau4DDzwBrH">Results</h2>
+    <h2 id="results" data-page-node-id="TyDLXDlJEq8Vau4DDzwBrH">Results</h2>
+    <div class="block intro-card">
+      <p class="lead">We evaluate MLSD on Backpack2025 Seq.2 and the self-collected Campus and Road sequences. Alignment overlays show the relationship between each reconstructed map and its satellite reference. The accompanying fields visualize the local anisotropy implied by the fitted map-to-reference transformation.</p>
+    </div>
+
 
     <div class="block" data-page-node-id="SSfy40kaGwH7OGlHRrzMaD">
       <div class="qual-grid" data-page-node-id="FR93JKVCrr4OQz9WCqyASn">
@@ -330,32 +160,28 @@
 
         <!-- row 3: distortion fields -->
         <div class="qual-row img-row heat">
-          <div class="img-box"><img src="static/images/qual_heat_backpack.jpg" alt="Heatmap, Backpack" data-page-node-id="ILIvWdx9DZTjyfbzbRTj5K"></div>
-          <div class="img-box"><img src="static/images/qual_heat_campus.jpg" alt="Heatmap, Campus" data-page-node-id="vyffIk3UFzyqrYQ0f3h7xk"></div>
-          <div class="img-box"><img src="static/images/qual_heat_road.jpg" alt="Heatmap, Road" data-page-node-id="kUIApFuaqEARUXjzOcqYZa"></div>
+          <div class="img-box"><img src="static/images/qual_heat_backpack.jpg" alt="Local anisotropy heatmap, Backpack" data-page-node-id="ILIvWdx9DZTjyfbzbRTj5K"></div>
+          <div class="img-box"><img src="static/images/qual_heat_campus.jpg" alt="Local anisotropy heatmap, Campus" data-page-node-id="vyffIk3UFzyqrYQ0f3h7xk"></div>
+          <div class="img-box"><img src="static/images/qual_heat_road.jpg" alt="Local anisotropy heatmap, Road" data-page-node-id="kUIApFuaqEARUXjzOcqYZa"></div>
         </div>
         <div class="qual-row tag-row">
-          <p class="img-tag" data-page-node-id="31JKXetGHB5fd5a5QpjqBW">Distortion field</p>
-          <p class="img-tag" data-page-node-id="C8KOlAAVr7dSQRpQzIpFwi">Distortion field</p>
-          <p class="img-tag" data-page-node-id="Bv0tL5i9byzZz9Dlwe2Ea8">Distortion field</p>
+          <p class="img-tag" data-page-node-id="31JKXetGHB5fd5a5QpjqBW">Local anisotropy</p>
+          <p class="img-tag" data-page-node-id="C8KOlAAVr7dSQRpQzIpFwi">Local anisotropy</p>
+          <p class="img-tag" data-page-node-id="Bv0tL5i9byzZz9Dlwe2Ea8">Local anisotropy</p>
         </div>
       </div>
-      <p class="caption" data-page-node-id="OWlRg9AWNqB0C5S6mjpUiM"><b data-page-node-id="c5Mb8zSFUxH7ESNaLXkGtM">Figure 5.</b> Alignment overlays (top) and local distortion fields d(x) (bottom) for the three sequences. Warmer colors indicate larger local deviation from the similarity transform.</p>
-    </div>
-
-    <div class="block" data-page-node-id="wF67NXSVHnEpOk849wjX4b">
-      <div class="card" data-page-node-id="LhRj34LLKZlZC4B56M5qK5">
-        <img class="full" src="static/images/fig11_complementarity.jpg" alt="Complementarity between MLSD and conventional metrics" data-page-node-id="vTGE7PWyVf9cBeORrUX4OD">
-      </div>
-      <p class="caption" data-page-node-id="fUYHkrOLxRpiuQoabXF0RB"><b data-page-node-id="rzu8OgCU1Y7UgDWbV5s7nJ">Figure 6.</b> MLSD vs. conventional metrics: (a) APE, (b) CD, (c) AWD. No simple monotonic relation indicates complementary structural information.</p>
     </div>
   </div>
 
   <!-- ===================== Quantitative results (tables) ===================== -->
   <div class="section" data-page-node-id="er86BrDusl7ZcLYwgRR2Qo">
-    <h2 data-page-node-id="TymHzfmwggqTz4DwHXs1rn">Quantitative Results</h2>
-
-    <div class="block table-wrap" data-page-node-id="L2iISN6YYLCnyGUcfEpz4V">
+    <h2 id="quantitative-results" data-page-node-id="TymHzfmwggqTz4DwHXs1rn">Quantitative Results</h2>
+    <div class="block quant-cols">
+      <div class="quant-text intro-card">
+        <p class="lead">We report MLSD alongside available trajectory and point-cloud evaluation metrics. APE and RPE describe trajectory error, while CD, AWD, and SCS measure geometric discrepancy or spatial consistency. MLSD summarizes non-similarity in the fitted planar alignment.</p>
+        <p class="lead">To examine correspondence repeatability, we repeat manual anchor selection 30 times for each map-reference pair, refitting the transformation and recomputing MLSD in every trial. The resulting coefficients of variation are 6.97%, 8.16%, and 8.40% for Backpack2025 Seq.2, Campus, and Road, respectively.</p>
+      </div>
+      <div class="quant-table table-wrap" data-page-node-id="L2iISN6YYLCnyGUcfEpz4V">
       <table data-page-node-id="zqfTHHX6ydDd7XF7iiS67R">
         <thead data-page-node-id="XjLh7Qq3flFtrgdAKENm10">
           <tr data-page-node-id="xFdo877gkDVf1EsND0eH0N"><th data-page-node-id="dcyCUHD87do8aAVMnELiR6">Sequence</th><th data-page-node-id="neApVIv4IwxTx8B0jTBYNN">SLAM method</th><th data-page-node-id="ioHVsCJlFTF4JPU14HOv5j">APE &darr;</th><th data-page-node-id="Ktv67XPqKlQH7uvgNMQO0i">RPE &darr;</th><th data-page-node-id="b2M1iyIafTbwyRPvXJJVpb">CD &darr;</th><th data-page-node-id="1xXNqFDGNnX0k0MKMIObx6">AWD &darr;</th><th data-page-node-id="YlSQCAeZ9sljQwcqR3Rhh6">SCS &darr;</th><th data-page-node-id="81zi53MeGY33rW0xJphcZh">MLSD &darr;</th></tr>
@@ -369,10 +195,10 @@
           <tr data-page-node-id="DuALmB3ZuHdcTX9yyTdA8a"><td data-page-node-id="aAnBjLiqwCEiG8sovowyDQ">Livox Mapping</td><td data-page-node-id="hytjOrYfhkiBnXl04gEVt4">180.91</td><td data-page-node-id="oNwdxy1221iceb2BuL2WaD">0.37</td><td data-page-node-id="BlFyhKoCTP6qch0HF7rLjx">113.92</td><td data-page-node-id="H6sP3bkcVhYGBBOinTnVUp">1.03</td><td data-page-node-id="QhCHpsHbH3wrsLHEOhCqQP">0.45</td><td data-page-node-id="pt63qTcPFEQB5VwLLHgy7B"><b data-page-node-id="41QIyfTZE1qs59W6DL4s9m">0.018</b></td></tr>
         </tbody>
       </table>
-      <p class="table-note" data-page-node-id="RENz4r5gVENFEgaFJs5mZ4"><b data-page-node-id="XA0WiEyxWamPTonlDu2RfH">Table 1.</b> Quantitative comparison on the three sequences. On Road, Livox Mapping yields a large APE (180.91 m) yet a low MLSD (0.018), while on Campus the opposite holds &mdash; MLSD measures local structural distortion rather than global pose error, complementing conventional metrics. Dashes: not applicable or no usable map.</p>
+      </div>
     </div>
 
-    <div class="block table-wrap" data-page-node-id="BCpx4X7cTh5X307WS3xpc2">
+    <!-- <div class="block table-wrap" data-page-node-id="BCpx4X7cTh5X307WS3xpc2">
       <table data-page-node-id="ztLz5MmuqOiLYoCxG8WnZG">
         <thead data-page-node-id="qDyvb8GGlH8yEV8mTus0mU">
           <tr data-page-node-id="Sd2TH5eiv4FxatTydpmu8j"><th data-page-node-id="3wn7bDjO0fY0AokskFtsSc">Sequence</th><th data-page-node-id="IOBbymFYN4C7KUu3NWGYfw">No. of trials</th><th data-page-node-id="mrwDhAo6xnPzKGVE6o2X7c">Mean MLSD</th><th data-page-node-id="0MyKKPxEByQNkaGpkj3qfa">Std</th><th data-page-node-id="3dnU9adZrJbKK6zKUbaubB">CV (%)</th></tr>
@@ -383,13 +209,12 @@
           <tr data-page-node-id="y8vRdUylVrArJOZyCvcYsr"><td data-page-node-id="LxUZm4XXr2sHFXKD51KJVM">Road</td><td data-page-node-id="VD6tmiEc1dd1rivQveQpmU">30</td><td data-page-node-id="AgD2XLGAIgKF7Xg3h1qrB6">0.02843</td><td data-page-node-id="Bgnw74tvqzeORKS7G8CBP2">0.00239</td><td data-page-node-id="A5flxd2NRtCmJzdVjVHxZF">8.40</td></tr>
         </tbody>
       </table>
-      <p class="table-note" data-page-node-id="OYK2VzgmtpYdqW752Ihrb0"><b data-page-node-id="NMa6pRNsyKnAkkHt9htfla">Table 2.</b> Repeatability of MLSD across 30 repeated correspondence annotations per sequence (CV &lt; 9% on all sequences).</p>
-    </div>
+    </div> -->
   </div>
 
   <!-- ===================== Citation ===================== -->
   <div class="section" data-page-node-id="LIMWDasH913Gnz2JyO2I0x">
-    <h2 data-page-node-id="PhVp6W4WVPXMoKi1jyITfZ">Citation</h2>
+    <h2 id="citation" data-page-node-id="PhVp6W4WVPXMoKi1jyITfZ">Citation</h2>
     <div class="bibtex" data-page-node-id="MsCLn9b3Fi8P3doVdKEOsd">@article{ma2026mlsd,
   title   = {Satellite-Guided Assessment of Structural Distortion in SLAM Point Cloud Maps},
   author  = {Ma, Yunfei et al.},
