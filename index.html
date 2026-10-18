@@ -22,8 +22,8 @@ header h1{font-size:clamp(30px,3.1vw,44px);font-weight:750;color:#111;line-heigh
 .pipeline-text{flex:1 1 44%;display:flex;flex-direction:column;justify-content:center}
 .quant-cols{display:flex;gap:34px;align-items:stretch}
 .quant-text{flex:0 0 36%;display:flex;flex-direction:column;justify-content:center}
-.quant-table{flex:1;display:flex;flex-direction:column;justify-content:center;min-width:0}
-.quant-table table{font-size:13px}
+.quant-table{flex:1;display:flex;flex-direction:column;min-width:0}
+.quant-table table{font-size:13px;flex:1}
 .quant-table th,.quant-table td{padding:9px 7px}
 @media(min-width:1450px){header{min-height:550px;padding-top:100px;padding-bottom:75px}header::before{width:95%}}
 @media(max-width:1239px){header::before{left:-40px;width:85%;min-width:0}}
@@ -44,7 +44,7 @@ header h1{font-size:clamp(30px,3.1vw,44px);font-weight:750;color:#111;line-heigh
     <div class="authors" data-page-node-id="9hzQpQ4ysKfXHf5uq1xPl8">
       <span data-page-node-id="DuBvUzVHQb8FgJkCyBjTNz"><a href="mailto:2415063017@wtu.edu.cn" data-page-node-id="4hRxs8b8cArpGt6o7ZIGOB">Yunfei Ma</a><sup data-page-node-id="fZfX90QUkVmHhC0GRADJHR">1</sup></span>
       <span data-page-node-id="DuBvUzVHQb8FgJkCyBjTNz"><a href="mailto:" data-page-node-id="4hRxs8b8cArpGt6o7ZIGOB">Gan Zou</a><sup data-page-node-id="fZfX90QUkVmHhC0GRADJHR">1</sup></span>
-      <span data-page-node-id="X9o9HC7ldoa2IErLnFdqES"><a href="mailto:jcheng@wtu.edu.cn" data-page-node-id="ECeAsbndJ7yA9LCEmJlkAM">Jun Cheng</a><sup data-page-node-id="gVFkb6zibSIIystV0ZCEgo">1,2,*</sup></span>
+      <span data-page-node-id="X9o9HC7ldoa2IErLnFdqES"><a href="https://icv-wtu.github.io/cj-page/" data-page-node-id="ECeAsbndJ7yA9LCEmJlkAM">Jun Cheng</a><sup data-page-node-id="gVFkb6zibSIIystV0ZCEgo">1,2,*</sup></span>
     </div>
 
     <div class="affiliations" data-page-node-id="nohy0EgQ1C2ybA6C9XBHPv">
@@ -173,21 +173,22 @@ header h1{font-size:clamp(30px,3.1vw,44px);font-weight:750;color:#111;line-heigh
     <h2 id="quantitative-results" data-page-node-id="TymHzfmwggqTz4DwHXs1rn">Quantitative Results</h2>
     <div class="block quant-cols">
       <div class="quant-text intro-card">
-        <p class="lead">We report MLSD alongside available trajectory and point-cloud evaluation metrics. APE and RPE describe trajectory error, while CD, AWD, and SCS measure geometric discrepancy or spatial consistency. MLSD summarizes non-similarity in the fitted planar alignment.</p>
+        <p class="lead">We report MLSD alongside available trajectory and point-cloud evaluation metrics. APE and RPE describe trajectory error, while CD, AWD, and SCS measure geometric discrepancy or spatial consistency. MLSD summarizes non-similarity in the fitted planar alignment. In the table, "--" denotes metrics that are unavailable or inapplicable under the reference configuration: DLO Seq.&nbsp;2 provides ground-truth poses but no ground-truth point cloud, allowing APE and RPE to be computed, whereas CD, AWD, and SCS remain unavailable.</p>
         <p class="lead">To examine correspondence repeatability, we repeat manual anchor selection 30 times for each map-reference pair, refitting the transformation and recomputing MLSD in every trial. The resulting coefficients of variation are 6.97%, 8.16%, and 8.40% for Backpack2025 Seq.2, Campus, and Road, respectively.</p>
       </div>
       <div class="quant-table table-wrap" data-page-node-id="L2iISN6YYLCnyGUcfEpz4V">
       <table data-page-node-id="zqfTHHX6ydDd7XF7iiS67R">
         <thead data-page-node-id="XjLh7Qq3flFtrgdAKENm10">
-          <tr data-page-node-id="xFdo877gkDVf1EsND0eH0N"><th data-page-node-id="dcyCUHD87do8aAVMnELiR6">Sequence</th><th data-page-node-id="neApVIv4IwxTx8B0jTBYNN">SLAM method</th><th data-page-node-id="ioHVsCJlFTF4JPU14HOv5j">APE &darr;</th><th data-page-node-id="Ktv67XPqKlQH7uvgNMQO0i">RPE &darr;</th><th data-page-node-id="b2M1iyIafTbwyRPvXJJVpb">CD &darr;</th><th data-page-node-id="1xXNqFDGNnX0k0MKMIObx6">AWD &darr;</th><th data-page-node-id="YlSQCAeZ9sljQwcqR3Rhh6">SCS &darr;</th><th data-page-node-id="81zi53MeGY33rW0xJphcZh">MLSD &darr;</th></tr>
+          <tr><th rowspan="2" class="left">Metric &darr;</th><th colspan="3">DLO</th><th colspan="2">Livox Mapping</th></tr>
+          <tr><th>Seq.&nbsp;2</th><th>Campus</th><th>Road</th><th>Campus</th><th>Road</th></tr>
         </thead>
         <tbody data-page-node-id="w4bBB1j6lokg6dkJQa9Dug">
-          <tr data-page-node-id="1zFBBaWlu54ecNeQl6o3GN"><td rowspan="2" data-page-node-id="P4Cv0hEFznnHmTsUm9CS0s">Seq.2</td><td data-page-node-id="Mlb6zTiRMauG1mgW9Battg">DLO</td><td data-page-node-id="Izc8T8gjvjwqRGk0CfJ7A5">3.20</td><td data-page-node-id="F8V9AJmW5qbJGFS95AYo5N">0.05</td><td data-page-node-id="n1ozLlCJGdiByIJIsg8yIo">&ndash;</td><td data-page-node-id="IG5psRE2WN6RTqvvbOqew1">&ndash;</td><td data-page-node-id="aoqCHLFegI7tkIEFbUYrrj">&ndash;</td><td data-page-node-id="E76VHOQ7eE3kGz5ZK9gr27"><b data-page-node-id="kAUNqiQbuKCJcxawn3LD4z">0.026</b></td></tr>
-          <tr data-page-node-id="xb0iLt77LQpsZHyFEMZOaj"><td data-page-node-id="gRtXd4RlDZpbYNdWHgrlzv">Livox Mapping</td><td data-page-node-id="9JSwsdl6RU53mnheHc1wEv">&ndash;</td><td data-page-node-id="CFu1YEg12FsXl4OLJRjMFx">&ndash;</td><td data-page-node-id="2qAXf65824p6BJeY6ATkEk">&ndash;</td><td data-page-node-id="dYHjBGiwyX7a41GlQd5nDS">&ndash;</td><td data-page-node-id="9LyNSmGw4nac7G3eLOQEEx">&ndash;</td><td data-page-node-id="BrznVSftHCkzNghQBuNRnS">&ndash;</td></tr>
-          <tr data-page-node-id="H5XksCdiw3FGClTeGBr8oy"><td rowspan="2" data-page-node-id="196o32KmK8erKhZcljmsZu">Campus</td><td data-page-node-id="7H0V3tnIaco3I6IFS41ANI">DLO</td><td data-page-node-id="ojQtwbPB30FKoeGJ0gDGko">&ndash;</td><td data-page-node-id="5ZTw4RPgkOVIiPDvIZds2f">&ndash;</td><td data-page-node-id="qP4ugfUZHhTfppBqrnDxym">&ndash;</td><td data-page-node-id="CUewhRT8AGMfaCEyRq54kR">&ndash;</td><td data-page-node-id="XEv1CjIjxBxiHtgOtZvfkC">&ndash;</td><td data-page-node-id="GaqyHjhr2rHcbQnBaUo8e1"><b data-page-node-id="CCIOxQmFIeRBEnqa1VdXgs">0.014</b></td></tr>
-          <tr data-page-node-id="sIpsYjVSvBNflNtC1IxJWL"><td data-page-node-id="FOtbqGFUqXOdFmJc9UzAZB">Livox Mapping</td><td data-page-node-id="lfObzWdiUShL1XLjzLQzig">19.94</td><td data-page-node-id="2LlwGrrYaWVjO8hr7EiQbU">0.14</td><td data-page-node-id="d9AQ9Y5FOAOc9vgognMKRF">44.18</td><td data-page-node-id="uWDYDJuAEoh5LzPtChUGXB">0.56</td><td data-page-node-id="iwYdscq8QBA7CVknKCrmc6">0.47</td><td data-page-node-id="0HOWAnr5kHJSdvYGtj0hPt">0.083</td></tr>
-          <tr data-page-node-id="NbywyT5nhdWEvT9vSksj5W"><td rowspan="2" data-page-node-id="keSF5DsLRlNuHXRi6scbRY">Road</td><td data-page-node-id="N5OLUenKbG3BJ7F6Y3irWD">DLO</td><td data-page-node-id="ya2NSgV43U0M52DGgfDCes">&ndash;</td><td data-page-node-id="A4GMtBmSMa4zEAo0rtkoWk">&ndash;</td><td data-page-node-id="K9wBaDSBK56C0YZ8WcmsuM">&ndash;</td><td data-page-node-id="ANyIrAPDkLZsB0SPc2ADYj">&ndash;</td><td data-page-node-id="Fh7IvUzWFGfdjpGfGx0XlQ">&ndash;</td><td data-page-node-id="ISb6B7p5ttR03s8aT9mA7r">0.028</td></tr>
-          <tr data-page-node-id="DuALmB3ZuHdcTX9yyTdA8a"><td data-page-node-id="aAnBjLiqwCEiG8sovowyDQ">Livox Mapping</td><td data-page-node-id="hytjOrYfhkiBnXl04gEVt4">180.91</td><td data-page-node-id="oNwdxy1221iceb2BuL2WaD">0.37</td><td data-page-node-id="BlFyhKoCTP6qch0HF7rLjx">113.92</td><td data-page-node-id="H6sP3bkcVhYGBBOinTnVUp">1.03</td><td data-page-node-id="QhCHpsHbH3wrsLHEOhCqQP">0.45</td><td data-page-node-id="pt63qTcPFEQB5VwLLHgy7B"><b data-page-node-id="41QIyfTZE1qs59W6DL4s9m">0.018</b></td></tr>
+          <tr><td class="left">APE</td><td>3.20</td><td>&ndash;</td><td>&ndash;</td><td>19.94</td><td>180.91</td></tr>
+          <tr><td class="left">RPE</td><td>0.05</td><td>&ndash;</td><td>&ndash;</td><td>0.14</td><td>0.37</td></tr>
+          <tr><td class="left">CD</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>44.18</td><td>113.92</td></tr>
+          <tr><td class="left">AWD</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>0.56</td><td>1.03</td></tr>
+          <tr><td class="left">SCS</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>0.47</td><td>0.45</td></tr>
+          <tr><td class="left"><b>MLSD</b><br><small>(OURS)</small></td><td><b>0.026</b></td><td><b>0.014</b></td><td><b>0.028</b></td><td><b>0.083</b></td><td><b>0.018</b></td></tr>
         </tbody>
       </table>
       </div>
