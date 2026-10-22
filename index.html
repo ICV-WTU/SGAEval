@@ -168,8 +168,94 @@ header h1{font-size:clamp(30px,3.1vw,44px);font-weight:750;color:#111;line-heigh
         </div>
       </div>
     </div>
-    <div class="block">
-      <img class="full" style="display: block; margin-left: auto; margin-right: auto;" src="static/images/SGASD_.gif" alt="SGASD results animation">
+    <div class="block results-carousel" role="region" aria-roledescription="carousel" aria-label="SGASD results animations" tabindex="0">
+      <style>
+        .results-carousel{max-width:960px;margin-left:auto;margin-right:auto}
+        .results-carousel .carousel-stage{position:relative;overflow:hidden;touch-action:pan-y}
+        .results-carousel .carousel-track{display:flex;transition:transform .45s ease}
+        .results-carousel .carousel-slide{flex:0 0 100%;min-width:0;margin:0;display:flex;align-items:center;justify-content:center}
+        .results-carousel .carousel-slide img{display:block;width:100%;height:auto;max-height:650px;object-fit:contain}
+        .results-carousel button{cursor:pointer;font:inherit}
+        .results-carousel .carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border:1px solid #ddd;border-radius:50%;background:#fffffff0;color:#222;font-size:28px;line-height:1;box-shadow:0 2px 8px #0002}
+        .results-carousel .carousel-prev{left:10px}.results-carousel .carousel-next{right:10px}
+        .results-carousel .carousel-controls{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:16px}
+        .results-carousel .carousel-dot{width:28px;height:28px;padding:8px;border:0;background:transparent}
+        .results-carousel .carousel-dot::before{content:"";display:block;width:12px;height:12px;border-radius:50%;background:#ccc}
+        .results-carousel .carousel-dot[aria-current="true"]::before{background:var(--link)}
+        .results-carousel button:focus-visible,.results-carousel:focus-visible{outline:3px solid #417fb5;outline-offset:3px}
+        .results-carousel .carousel-status{font-size:13px;color:#555;min-width:34px}
+        @media(prefers-reduced-motion:reduce){.results-carousel .carousel-track{transition:none}}
+      </style>
+      <div class="carousel-stage">
+        <div class="carousel-track">
+          <!-- Replace each slide's src below when the other GIFs are uploaded. -->
+          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 3">
+            <img src="static/images/SGASD_.gif" alt="SGASD results animation 1">
+          </figure>
+          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true">
+            <img src="static/images/SGASD_.gif" alt="SGASD results animation 2">
+          </figure>
+          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true">
+            <img src="static/images/SGASD_.gif" alt="SGASD results animation 3">
+          </figure>
+        </div>
+        <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous animation">&#8249;</button>
+        <button class="carousel-arrow carousel-next" type="button" aria-label="Next animation">&#8250;</button>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-dot" type="button" aria-label="Show animation 1" aria-current="true"></button>
+        <button class="carousel-dot" type="button" aria-label="Show animation 2" aria-current="false"></button>
+        <button class="carousel-dot" type="button" aria-label="Show animation 3" aria-current="false"></button>
+        <span class="carousel-status" aria-live="off">1 / 3</span>
+      </div>
+      <script>
+        (() => {
+          const carousel = document.currentScript.parentElement;
+          const track = carousel.querySelector('.carousel-track');
+          const slides = [...carousel.querySelectorAll('.carousel-slide')];
+          const dots = [...carousel.querySelectorAll('.carousel-dot')];
+          const status = carousel.querySelector('.carousel-status');
+          const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+          let index = 0, timer, paused = motion.matches, hovered = false, touchX = null;
+          function schedule() {
+            clearInterval(timer);
+            if (!paused && !hovered && !carousel.contains(document.activeElement) && !document.hidden)
+              timer = setInterval(() => show(index + 1), 8000);
+          }
+          function show(next) {
+            index = (next + slides.length) % slides.length;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            slides.forEach((slide, i) => slide.setAttribute('aria-hidden', String(i !== index)));
+            dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
+            status.textContent = `${index + 1} / ${slides.length}`;
+            schedule();
+          }
+          carousel.querySelector('.carousel-prev').addEventListener('click', () => show(index - 1));
+          carousel.querySelector('.carousel-next').addEventListener('click', () => show(index + 1));
+          dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+          carousel.addEventListener('mouseenter', () => { hovered = true; schedule(); });
+          carousel.addEventListener('mouseleave', () => { hovered = false; schedule(); });
+          carousel.addEventListener('focusin', schedule);
+          carousel.addEventListener('focusout', () => setTimeout(schedule, 0));
+          carousel.addEventListener('keydown', event => {
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+              event.preventDefault(); show(index + (event.key === 'ArrowRight' ? 1 : -1));
+            }
+          });
+          const stage = carousel.querySelector('.carousel-stage');
+          stage.addEventListener('touchstart', event => { touchX = event.touches[0].clientX; clearInterval(timer); }, {passive:true});
+          stage.addEventListener('touchend', event => {
+            const delta = touchX === null ? 0 : event.changedTouches[0].clientX - touchX;
+            touchX = null;
+            if (Math.abs(delta) > 50) show(index + (delta < 0 ? 1 : -1));
+            else schedule();
+          }, {passive:true});
+          stage.addEventListener('touchcancel', () => { touchX = null; schedule(); }, {passive:true});
+          document.addEventListener('visibilitychange', schedule);
+          motion.addEventListener('change', () => { paused = motion.matches; schedule(); });
+          schedule();
+        })();
+      </script>
     </div>
   </div>
 
