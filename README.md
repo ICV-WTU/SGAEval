@@ -1,8 +1,8 @@
-# SGASD
+# SGAEval
 
 **Satellite-Guided Assessment of Structural Distortion in SLAM Point Cloud Maps**
 
-This repository contains the static project website for SGASD. It presents a method for assessing structural distortion in outdoor SLAM point cloud maps using satellite imagery or aerial orthophotos, along with the dataset and experimental results.
+This repository contains the static project website for SGAEval. It presents a method for assessing structural distortion in outdoor SLAM point cloud maps using satellite imagery or aerial orthophotos, along with the dataset and experimental results.
 
 ## Overview
 
@@ -17,8 +17,8 @@ The page includes:
 
 ## Project Links
 
-- Dataset: [SGASD Dataset](https://opendatalab.org.cn/ICVGroup-WTU/SGASD-DATASET)
-- Source code: [SGASD on GitHub](https://github.com/ICV-WTU/SGASD-Satellite-Guided-Assessment-of-Structural-Distortion-in-SLAM-Point-Cloud-Maps)
+- Dataset: [SGAEval Dataset](https://opendatalab.org.cn/ICVGroup-WTU/SGAEval-DATASET/tree/main)
+- Source code: [SGAEval on GitHub](https://github.com/ICV-WTU/SGAEval-Satellite-Guided-Assessment-of-Structural-Distortion-in-SLAM-Point-Cloud-Maps)
 
 ## Directory Structure
 
@@ -53,8 +53,8 @@ The website can be deployed to any static hosting service. For GitHub Pages, sel
 ## Citation
 
 ```bibtex
-@article{ma2026sgasd,
-  title   = {SGASD: Satellite-Guided Assessment of Structural Distortion in SLAM Point Cloud Maps},
+@article{ma2026sgaeval,
+  title   = {SGAEval: Satellite-Guided Assessment of Structural Distortion in SLAM Point Cloud Maps},
   author  = {Ma, Yunfei and Zou, Gan and Cheng, Jun},
   journal = {Preprint submitted to IEEE},
   year    = {2026}
